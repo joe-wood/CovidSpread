@@ -1,0 +1,6 @@
+brew install imagemagick
+brew install Inkscape
+
+javac -cp .:./gson-2.8.6.jar *.java && java  -cp .:./gson-2.8.6.jar CovidReader
+
+rm *.png; rm *.mp4; for file in `ls *.svg`; do echo $file; convert $file $file.png; done; ffmpeg -r 6 -f image2 -i testCovid_%03d.svg.png -vcodec libx264 -crf 25  -pix_fmt yuv420p covidSpread.mp4
